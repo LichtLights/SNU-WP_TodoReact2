@@ -69,8 +69,8 @@ const TodoList = () => {
     // ...todos => {id: 1, text: "할일1", completed: false}, {id: 2, text: "할일2", completed: false}}, ..
 
     // Firestore 에 추가한 할 일을 저장합니다.
-    let today = new Date();
-    const year = today.getFullYear();
+    let date = new Date();
+    const year = date.getFullYear();
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
     
@@ -176,7 +176,8 @@ const TodoList = () => {
           <TodoItem
             key={todo.id}
             todo={todo}
-            datetime ={dateStr}
+            
+            datetime={todo.dateStr}
 
             onToggle={() => toggleTodo(todo.id)}
             onDelete={() => deleteTodo(todo.id)}

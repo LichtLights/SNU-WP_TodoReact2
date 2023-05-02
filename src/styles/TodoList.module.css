@@ -37,3 +37,8 @@ button.addButton:hover {
   margin-left: 10px;
   flex-grow: 1;
 }
+
+.dateText {
+  text-align: center;
+  flex-grow: 1;
+}
