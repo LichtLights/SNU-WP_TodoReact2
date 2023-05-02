@@ -31,9 +31,9 @@ const TodoList = () => {
 
   const getTodos = async () => {
     // Firestore 쿼리를 만듭니다.
-    const q = query(todoCollection);
+    // const q = query(todoCollection);
     // const q = query(collection(db, "todos"), where("user", "==", user.uid));
-    // const q = query(todoCollection, orderBy("datetime", "desc"));
+    const q = query(todoCollection, orderBy("datetime", "desc"));
 
     // Firestore 에서 할 일 목록을 조회합니다.
     const results = await getDocs(q);
