@@ -18,6 +18,7 @@ import {
   updateDoc,
   deleteDoc,
   orderBy,
+  serverTimestamp,
 } from "firebase/firestore";
 
 // DB의 todos 컬렉션 참조를 만듭니다. 컬렉션 사용시 잘못된 컬렉션 이름 사용을 방지합니다.
@@ -69,6 +70,7 @@ const TodoList = () => {
     const docRef = await addDoc(todoCollection, {
       text: input,
       completed: false,
+      datetime: serverTimestamp,
     });
 
     // id 값을 Firestore 에 저장한 값으로 지정합니다.
