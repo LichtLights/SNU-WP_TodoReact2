@@ -64,11 +64,23 @@ const TodoList = () => {
     //   id: 할일의 고유 id,
     //   text: 할일의 내용,
     //   completed: 완료 여부,
+    //   datetime: 날짜와 시간
     // }
     // ...todos => {id: 1, text: "할일1", completed: false}, {id: 2, text: "할일2", completed: false}}, ..
 
     // Firestore 에 추가한 할 일을 저장합니다.
     let today = new Date();
+    const year = today.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    
+
+    const hours = ('0' + date.getHours()).slice(-2);
+    const minutes = ('0' + date.getMinutes()).slice(-2);
+    const seconds = ('0' + date.getSeconds()).slice(-2);
+
+    const dateStr = year + '-' + month + '-' + day + ',' + hours + ':' + minutes + ':' + seconds;
+
     const docRef = await addDoc(todoCollection, {
       text: input,
       completed: false,
@@ -76,7 +88,7 @@ const TodoList = () => {
     });
 
     // id 값을 Firestore 에 저장한 값으로 지정합니다.
-    setTodos([...todos, { id: docRef.id, text: input, completed: false, datetime: today }]);
+    setTodos([...todos, { id: docRef.id, text: input, completed: false, datetime: dateStr }]);
     setInput("");
   };
 
