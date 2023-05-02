@@ -68,14 +68,15 @@ const TodoList = () => {
     // ...todos => {id: 1, text: "할일1", completed: false}, {id: 2, text: "할일2", completed: false}}, ..
 
     // Firestore 에 추가한 할 일을 저장합니다.
+    let today = new Date();
     const docRef = await addDoc(todoCollection, {
       text: input,
       completed: false,
-      datetime: Timestamp,
+      datetime: today,
     });
 
     // id 값을 Firestore 에 저장한 값으로 지정합니다.
-    setTodos([...todos, { id: docRef.id, text: input, completed: false, datetime: Timestamp }]);
+    setTodos([...todos, { id: docRef.id, text: input, completed: false, datetime: today }]);
     setInput("");
   };
 
